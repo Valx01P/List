@@ -1,33 +1,21 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<%- include("header") -%>
 
-<head>
-  <meta charset="utf-8">
-  <title>To do list</title>
-</head>
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
 
-<body>
-  <!-- with the ejs marker we wouldn't be able to do this <% %> is for the javascript
-  <%= %> is for the html-->
-<h1> <%= kindOfDay %> </h1>
+  <div class="box">
+    <% for (var i=0; i<newListItems.length; i++) { %>
+    <div class="item">
+      <input type="checkbox">
+      <p><%= newListItems[i] %></p>
+    </div>
+    <% } %>
 
-<ul>
-  
-<% for (var i=0; i<newListItems.length; i++) { %>
-  <li><%= newListItems[i] %></li>
-<% } %>
+    <form class="item" action="/" method="post">
+      <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+      <button type="submit" name="list" value=<%= listTitle %>>+</button>
+    </form>
+  </div>
 
-</ul>
-
-<form class="" action="/" method="post">
-
-  <input type="text" name="newItem">
-
-  <button type="submit" name="button">Add</button>
-
-</form>
-
-
-</body>
-
-</html>
+  <%- include("footer") -%>
